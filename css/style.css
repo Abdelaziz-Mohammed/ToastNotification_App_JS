@@ -1,0 +1,200 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+:root {
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --main-bg: #262850;
+    --toast-bg: ;
+}
+body {
+    background-color: var(--main-bg);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 20px;
+}
+.btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+.btns button {
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 250px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    opacity: 0.9;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btns button:hover {
+    opacity: 1;
+}
+.btns button#success {
+    background-color: var(--success-color);
+}
+.btns button#error {
+    background-color: var(--error-color);
+}
+.btns button#warning {
+    background-color: var(--warning-color);
+}
+.btns button#info {
+    background-color: var(--info-color);
+}
+#toast-box {
+    position: fixed;
+    top: 30px;
+    right: 12.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 15px;
+    width: 350px;
+}
+#toast-box .toast {
+    width: 350px;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transform: translateX(365px);
+    animation: animateToast 4.5s linear forwards;
+}
+@keyframes animateToast {
+    0% {
+        transform: translateX(365px);
+    }
+    10%,
+    90% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translateX(365px);
+    }
+}
+#toast-box .toast .toast-icon,
+#toast-box .toast .toast-exit {
+    font-size: 20px;
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#toast-box .toast .toast-exit {
+    color: #6a6a6a;
+}
+#toast-box .toast .toast-text {
+    flex: 1;
+    height: 100%;
+    padding: 0px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3px;
+    position: relative;
+}
+#toast-box .toast .toast-text::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 70%;
+    width: 3px;
+    border-radius: 2px;
+}
+#toast-box .toast.success .toast-text::before {
+    background-color: var(--success-color);
+}
+#toast-box .toast.error .toast-text::before {
+    background-color: var(--error-color);
+}
+#toast-box .toast.warning .toast-text::before {
+    background-color: var(--warning-color);
+}
+#toast-box .toast.info .toast-text::before {
+    background-color: var(--info-color);
+}
+#toast-box .toast .toast-text h3 {
+    text-transform: capitalize;
+    color: black;
+}
+#toast-box .toast .toast-text p {
+    color: #6a6a6a;
+}
+#toast-box .toast.success .toast-icon,
+#toast-box .toast.success .toast-text h3 {
+    color: var(--success-color);
+}
+#toast-box .toast.error .toast-icon,
+#toast-box .toast.error .toast-text h3 {
+    color: var(--error-color);
+}
+#toast-box .toast.warning .toast-icon,
+#toast-box .toast.warning .toast-text h3 {
+    color: var(--warning-color);
+}
+#toast-box .toast.info .toast-icon,
+#toast-box .toast.info .toast-text h3 {
+    color: var(--info-color);
+}
+#toast-box .toast::before,
+#toast-box .toast::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 4px;
+}
+#toast-box .toast::after {
+    animation: decreaseWidth 4s linear forwards;
+}
+@keyframes decreaseWidth {
+    to {
+        width: 0;
+    }
+}
+#toast-box .toast::before {
+    background-color: #aaa;
+}
+#toast-box .toast.success::after {
+    background-color: var(--success-color);
+}
+#toast-box .toast.error::after {
+    background-color: var(--error-color);
+}
+#toast-box .toast.warning::after {
+    background-color: var(--warning-color);
+}
+#toast-box .toast.info::after {
+    background-color: var(--info-color);
+}
+
